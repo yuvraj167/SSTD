@@ -1,18 +1,12 @@
 <table class="table table-striped">
-<tr>
-<td>First Name</td>
-<td>Last Name</td>
-</tr>
+	<tr>
+		<td>First Name</td>
+		<td>Last Name</td>
+	</tr>
 <% @customers.each do |customer|%>
 	<tr>
-<!-- 	<%= customer.customer_id%>
-	<%= customer.first_name%>
-	<%= customer.last_name%>
-	<%= customer.mobile_no %>
-	<%= customer.plan%>
-	<%= customer.setup_box_id %> -->
-	<td><%= customer.first_name%></td>
-	<td><%= customer.last_name%></td>
+		<td><%= customer.first_name%></td>
+		<td><%= customer.last_name%></td>
 	</tr>
 <%end%>
 </table>
