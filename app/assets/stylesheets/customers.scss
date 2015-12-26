@@ -1,15 +1,9 @@
-// Place all the styles related to the customers controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
-
 body { 
 font-family: 'Open Sans', sans-serif;
 margin: 0;
 padding: 0; 
 /*background: #e5e5e5;*/
-width: 100%;
+  
 color: #3f3f3f;
 font-size: 14px;
 line-height: 24px;
@@ -127,6 +121,7 @@ margin: 20px -10px 10px -10px;
 #footer { 
 background-image:url(header.jpg);
 width:auto;
+height:70px;
 color: #fff;
 padding: 10px;
 }

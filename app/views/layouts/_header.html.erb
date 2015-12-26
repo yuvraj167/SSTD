@@ -1,4 +1,18 @@
-<% if user_signed_in? %>
-  			 <%= link_to current_user.email, edit_user_registration_path, :class => 'navbar-link' %> |
-  			 <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-<% end %>
+<div id="top">
+	<div id="header">
+		<h1 class="h1"><strong>Sanju Star TV<span class="h1"></span></strong></h1>
+	</div>
+
+	<div id="topmenu">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/zones/index">Zone Management</a></li>
+			<li><a href="#">Package</a></li>
+			<li><a href="#">Inventory</a></li>
+			<li><%= link_to "Logout", destroy_user_session_path , method: :delete%></li>   
+		</ul>
+	</div>
+
+	<div class="clear"> </div>
+
+</div>
