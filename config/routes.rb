@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'zones/index'
+
+  get 'zones/new'
+
+  get 'zones/create'
+
+  get 'zones/show'
+
   get 'home/index'
 
   #get 'management/index'
