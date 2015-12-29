@@ -1,4 +1,4 @@
-body { 
+body.devise{ 
   background: url(login.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -8,4 +8,7 @@ body {
 
 .sign_in {
     text-align: center;
+    background-color: rgba(192,192,192,0.3);
+    position: relative;
+    vertical-align: middle;
 }

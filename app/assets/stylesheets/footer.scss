@@ -1,0 +1,31 @@
+.navbar {
+   background-color: transparent;
+   background: rgba(0,0,0,0.5);
+   border-color: transparent;
+}
+
+
+#footer { 
+	width:auto;
+	color: #fff;
+}
+#footer a {
+ 	color: #fff;
+ 	text-decoration: none;
+ 	border-bottom: 1px dotted #fff;
+    }
+
+#footer a:hover { 
+	border-bottom: 1px dotted #ccc;
+ }
+
+
+.left { 
+	float: left; 
+}
+.right { 
+	float: right; 
+}
+.clear {
+ clear: both; padding: 0 0 10px 0;
+  }
