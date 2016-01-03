@@ -1,0 +1,68 @@
+<table class="table">
+	<tr>
+		<td>First Name</td>
+		<td><%= @customer.first_name %></td>
+	</tr>
+	<tr>
+		<td>Middle Name</td>
+		<td><%= @customer.middle_name %></td>
+	</tr>
+	<tr>
+		<td>Last Name</td>
+		<td><%= @customer.last_name %></td>
+	</tr>
+	<tr>
+		<td>Date of birth</td>
+		<td><%= @customer.date_of_birth %></td>
+	</tr>
+	<tr>
+		<td>Email Id</td>
+		<td><%= @customer.email_id %></td>
+	</tr>
+	<tr>
+		<td>Mobile No</td>
+		<td><%= @customer.mobile_no%></td>
+	</tr>
+	<tr>
+		<td>Address</td>
+		<td><%= @customer.address%></td>
+	</tr>
+	<tr>
+		<td>City</td>
+		<td><%= @customer.city%></td>
+	</tr>
+	<tr>
+		<td>PinCode</td>
+		<td><%= @customer.pincode%></td>
+	</tr>
+	<tr>
+		<td>State</td>
+		<td><%= @customer.state%></td>
+	</tr>
+	<tr>
+		<td>Photo</td>
+		<td><%= image_tag @customer.photo.url, :size => "100x100" %></td>
+	</tr>
+		<tr>
+		<td>Address proof</td>
+		<td><%= image_tag @customer.address_proof.url, :size => "100x100" %></td>
+	</tr>
+	<tr>
+		<td>Zone</td>
+		<td><%= @customer.zone %></td>
+	</tr>
+	<tr>
+		<td>Setup Box id</td>
+		<td><%= image_tag @customer.setup_box_id.url, :size => "100x100" %></td>
+	</tr>
+	<tr>
+		<td>Plan</td>
+		<td><%= @customer.plan %></td>
+	</tr>
+	<tr>
+		<td>Customer Id</td>
+		<td><%= @customer.customer_id %></td>
+	</tr>
+
+</table>
+

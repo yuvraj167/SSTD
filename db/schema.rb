@@ -24,14 +24,23 @@ ActiveRecord::Schema.define(version: 20151226184115) do
     t.string   "city"
     t.string   "pincode"
     t.string   "state"
-    t.string   "photo"
-    t.string   "address_proof"
-    t.string   "setup_box_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "address_proof_file_name"
+    t.string   "address_proof_content_type"
+    t.integer  "address_proof_file_size"
+    t.datetime "address_proof_updated_at"
+    t.string   "setup_box_id_file_name"
+    t.string   "setup_box_id_content_type"
+    t.integer  "setup_box_id_file_size"
+    t.datetime "setup_box_id_updated_at"
     t.string   "zone"
     t.string   "plan"
     t.string   "customer_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,10 +62,11 @@ ActiveRecord::Schema.define(version: 20151226184115) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "zones", force: :cascade do |t|
-    t.string   "zone_engineer"
+    t.string   "engineer"
+    t.string   "contact"
     t.string   "comments"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -11,9 +11,9 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :city
       t.string :pincode
       t.string :state
-      t.string :photo
-      t.string :address_proof
-      t.string :setup_box_id
+      t.attachment :photo
+      t.attachment :address_proof
+      t.attachment :setup_box_id
       t.string :zone
       t.string :plan
       t.string :customer_id

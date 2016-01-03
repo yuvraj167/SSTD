@@ -7,6 +7,10 @@ class CustomersController < ApplicationController
   	@customer = Customer.new
   end
 
+  def show
+    @customer = Customer.find(params[:id])
+  end
+
   def create
   	#logger.debug "'sdfs"
   	@customer = Customer.new(customer_params)
