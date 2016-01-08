@@ -1,1 +1,18 @@
-<h1>New Zone</h1>
+<center><h1>Add Zone</h1></center>
+<%= bootstrap_form_for(@zone,layout: :horizontal) do |f| %>
+  <% if @zone.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% @zone.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.text_field :engineer %>
+    <%= f.text_field :contact %>
+    <%= f.text_area :comments %>
+    <%= f.submit %>
+<% end %>

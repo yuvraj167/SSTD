@@ -2,24 +2,13 @@
    background-color: transparent;
    background: rgba(0,0,0,0.2);
    border-color: transparent;
-   margin-bottom: 20px;
 }
-
 
 #footer { 
 	width:auto;
 	color: #fff;
+  padding-top: 10px;
 }
-#footer a {
- 	color: #fff;
- 	text-decoration: none;
- 	border-bottom: 1px dotted #fff;
-    }
-
-#footer a:hover { 
-	border-bottom: 1px dotted #ccc;
- }
-
 
 .left { 
 	float: left; 
@@ -27,6 +16,3 @@
 .right { 
 	float: right; 
 }
-.clear {
- clear: both; padding: 0 0 10px 0;
-  }

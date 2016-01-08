@@ -2,6 +2,8 @@ class Customer < ActiveRecord::Base
 	# validates :first_name,presence: true
 	# validates :email_id,presence: true,uniqueness: true
 	# validates :mobile_no,presence: true,uniqueness: true
+	belongs_to :zone
+	belongs_to :plan
 	has_attached_file :photo
 	has_attached_file :address_proof
 	has_attached_file :setup_box_id

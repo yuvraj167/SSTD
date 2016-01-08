@@ -1,11 +1,11 @@
 <table class="table">
 	<tr>
-		<td>First Name</td>
-		<td><%= @customer.first_name %></td>
+		<td>Customer Id</td>
+		<td><%= @customer.id %></td>
 	</tr>
 	<tr>
-		<td>Middle Name</td>
-		<td><%= @customer.middle_name %></td>
+		<td>First Name</td>
+		<td><%= @customer.first_name %></td>
 	</tr>
 	<tr>
 		<td>Last Name</td>
@@ -28,18 +28,6 @@
 		<td><%= @customer.address%></td>
 	</tr>
 	<tr>
-		<td>City</td>
-		<td><%= @customer.city%></td>
-	</tr>
-	<tr>
-		<td>PinCode</td>
-		<td><%= @customer.pincode%></td>
-	</tr>
-	<tr>
-		<td>State</td>
-		<td><%= @customer.state%></td>
-	</tr>
-	<tr>
 		<td>Photo</td>
 		<td><%= image_tag @customer.photo.url, :size => "100x100" %></td>
 	</tr>
@@ -49,7 +37,7 @@
 	</tr>
 	<tr>
 		<td>Zone</td>
-		<td><%= @customer.zone %></td>
+		<td><%= @customer.zone.engineer%></td>
 	</tr>
 	<tr>
 		<td>Setup Box id</td>
@@ -57,12 +45,7 @@
 	</tr>
 	<tr>
 		<td>Plan</td>
-		<td><%= @customer.plan %></td>
+		<td><%= @customer.plan.name%></td>
 	</tr>
-	<tr>
-		<td>Customer Id</td>
-		<td><%= @customer.customer_id %></td>
-	</tr>
-
 </table>
 

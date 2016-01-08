@@ -11,19 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151226184115) do
+ActiveRecord::Schema.define(version: 20160107181035) do
+
+  create_table "complaints", force: :cascade do |t|
+    t.string   "issue"
+    t.string   "status"
+    t.integer  "customer_id"
+    t.integer  "employee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "complaints", ["customer_id"], name: "index_complaints_on_customer_id"
+  add_index "complaints", ["employee_id"], name: "index_complaints_on_employee_id"
 
   create_table "customers", force: :cascade do |t|
     t.string   "first_name"
-    t.string   "middle_name"
     t.string   "last_name"
     t.string   "date_of_birth"
     t.string   "email_id"
     t.string   "mobile_no"
     t.string   "address"
-    t.string   "city"
-    t.string   "pincode"
-    t.string   "state"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -36,11 +44,38 @@ ActiveRecord::Schema.define(version: 20151226184115) do
     t.string   "setup_box_id_content_type"
     t.integer  "setup_box_id_file_size"
     t.datetime "setup_box_id_updated_at"
-    t.string   "zone"
-    t.string   "plan"
-    t.string   "customer_id"
+    t.integer  "plan_id"
+    t.integer  "zone_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  add_index "customers", ["plan_id"], name: "index_customers_on_plan_id"
+  add_index "customers", ["zone_id"], name: "index_customers_on_zone_id"
+
+  create_table "employees", force: :cascade do |t|
+    t.string   "name"
+    t.string   "mobile_no"
+    t.integer  "zone_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "employees", ["zone_id"], name: "index_employees_on_zone_id"
+
+  create_table "inventories", force: :cascade do |t|
+    t.string   "description"
+    t.string   "quantity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "name"
+    t.string   "price"
+    t.string   "plan_details"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|

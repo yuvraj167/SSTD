@@ -1,4 +1,4 @@
-<center><h1>Add Customer</h1></center>
+<center><h1>Add Customer</h1></center><br>
 <%= bootstrap_form_for(@customer,layout: :horizontal,:html => { :multipart => true } )do |f| %>
   <% if @customer.errors.any? %>
     <div id="error_explanation">
@@ -11,23 +11,17 @@
       </ul>
     </div>
   <% end %>
-  <% @zone = Zone.all %>
     <%= f.text_field :first_name %>
-    <%= f.text_field :middle_name %>
     <%= f.text_field :last_name %>
-    <%= f.date_field :date_of_birth %>
+    <%= f.date_select :date_of_birth %>
     <%= f.email_field :email_id %>
     <%= f.phone_field :mobile_no %>
     <%= f.text_area :address %>
-    <%= f.text_field :city %>
-    <%= f.text_field :pincode %>
-    <%= f.text_field :state %>
     <%= f.file_field :photo %>
     <%= f.file_field :address_proof %>
-    <%= f.select :zone, @zone.map{|i| i.zone_engineer}, :prompt => 'Select one'%>
     <%= f.file_field :setup_box_id %>
-    <%= f.text_field :plan %>
-    <%= f.text_field :customer_id %>
+    <%= f.collection_select :zone_id, @zones, :id,:engineer,:prompt => "Select zone Engineer"%>
+    <%= f.collection_select :plan_id, @plans, :id,:name, :prompt => "Select one Plan"%>
     <%= f.submit %>
 <% end %>
 

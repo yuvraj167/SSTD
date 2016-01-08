@@ -1,5 +1,20 @@
-<% @zones.each do |zone| %>
-	<%=  @zone.engineer %>
-	<%= @zone.contact %>
-	<%= @zone.comments %>
-<% end %>
+<h1>Zone</h1><br>
+<table class="table table-striped table-bordered">
+	<tr>
+		<th>Zone Id </th>
+		<th>Engineer</th>
+		<th>Contact</th>
+		<th>Comments</th>
+	</tr>
+	<% @zones.each do |zone| %>
+		<tr>
+			<td><%= zone.id%></td>
+			<td><%= zone.engineer %></td>
+			<td><%= zone.contact%></td>
+			<td><%= zone.comments%></td>
+		</tr>
+	<% end %>
+</table> 
+
+
+<%= button_to('Add Zone', new_zone_path, :class => 'btn btn-large btn-primary',:method => :get)  %>
