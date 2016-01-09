@@ -1,0 +1,17 @@
+<%= bootstrap_form_for(@zone,layout: :horizontal) do |f| %>
+  <% if @zone.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% @zone.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.text_field :name %>
+    <%= f.text_area :comments %>
+    <%= f.collection_select :employee_id, @employees, :id,:name,:prompt => "Select zone Engineer"%>
+    <%= f.primary%>
+<% end %>

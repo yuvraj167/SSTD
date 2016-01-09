@@ -4,8 +4,6 @@ class CreateEmployees < ActiveRecord::Migration
       t.string :name
       t.string :mobile_no
       
-      t.references :zone, index: true, foreign_key: true
-
       t.timestamps null: false
     end
   end

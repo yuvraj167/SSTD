@@ -1,11 +1,15 @@
 class CustomersController < ApplicationController
-   def index
-  	@customers = Customer.all.includes(:zone,:plan)
-    respond_to do |format|
-      format.html
-      format.xls { send_data(@customers.to_xls(:only => [:first_name,:email_id])) }
-    end
+
+  def home
   end
+
+   def index
+    	@customers = Customer.all.includes(:zone,:plan)
+      respond_to do |format|
+        format.html
+        format.xls { send_data(@customers.to_xls(:only => [:first_name,:email_id])) }
+      end
+    end
 
   def new
   	@customer = Customer.new
@@ -19,13 +23,30 @@ class CustomersController < ApplicationController
 
   def create
   	@customer = Customer.new(customer_params)
-
   	if @customer.save
   		redirect_to :action => 'index'
   	else
   		render :action => 'new'
-  	end
-    
+  	end 
+  end
+
+  def edit
+    @customer = Customer.find(params[:id])
+  end
+
+  def update
+    @customer = Customer.find(params[:id])
+      if @customer.update(customer_params)
+        redirect_to @customer, notice: 'Customer was successfully updated.'
+      else
+        render :edit
+      end
+  end
+
+  def destroy
+    @customer = Customer.find(params[:id])
+    @customer.destroy
+    redirect_to customers_url, notice: 'Customer was successfully destroyed.'
   end
 
   private

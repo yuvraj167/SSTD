@@ -24,11 +24,7 @@
 #topmenu {
 	float: right;
 }
-#topmenu ul {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-}
+
 
 #topmenu li { 
 	display: inline; 
@@ -36,18 +32,3 @@
 }
 
 
-#topmenu li a { 
-	-webkit-border-radius: 7px;
-	-moz-border-radius: 7px;
-	border-radius: 7px;
-	padding: 5px 10px; 
-	background: #E1400F; 
-	text-decoration: none; 
-	color: #fff;
-}
-
-
-#topmenu li a:hover {
-	background: #eee;
-	color: #000;
-	}

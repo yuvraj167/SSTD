@@ -56,14 +56,12 @@ ActiveRecord::Schema.define(version: 20160107181035) do
   create_table "employees", force: :cascade do |t|
     t.string   "name"
     t.string   "mobile_no"
-    t.integer  "zone_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "employees", ["zone_id"], name: "index_employees_on_zone_id"
-
   create_table "inventories", force: :cascade do |t|
+    t.string   "item"
     t.string   "description"
     t.string   "quantity"
     t.datetime "created_at",  null: false
@@ -97,11 +95,13 @@ ActiveRecord::Schema.define(version: 20160107181035) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
   create_table "zones", force: :cascade do |t|
-    t.string   "engineer"
-    t.string   "contact"
+    t.string   "name"
     t.string   "comments"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "employee_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
+
+  add_index "zones", ["employee_id"], name: "index_zones_on_employee_id"
 
 end

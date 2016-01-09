@@ -1,0 +1,17 @@
+<%= bootstrap_form_for(@plan,layout: :horizontal,:html => { :multipart => true } )do |f| %>
+  <% if @plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+      <ul>
+      <% @plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    <%= f.text_field :name %>
+    <%= f.text_field :price %>
+    <%= f.text_field :plan_details %>
+    <%= f.submit %>
+<% end %>

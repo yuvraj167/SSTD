@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
-
+  get '/customer' => "customers#home"
   #get 'management/index'
   root 'home#index'
-  resources :zones, only: [:index,:show]
+  resources :zones
   devise_for :users
   resources :customers
   resources :employees
+  resources :inventories
+  resources :plans
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,2 +1,22 @@
-<h1>Employees#index</h1>
-<p>Find me in app/views/employees/index.html.erb</p>
+<h1>Employees</h1><br>
+<table class="table table-striped table-bordered">
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>Mobile No</th>
+	</tr>
+	<% @employees.each do |employee| %>
+		<tr>
+			<td><%= employee.id%></td>
+			<td><%= employee.name %></td>
+			<td><%= employee.mobile_no%></td>
+			<td><%= link_to 'Edit', edit_employee_path(employee) %></td>
+		</tr>
+	<% end %>
+</table> 
+
+
+
+
+<%= button_to('Add Employee', new_employee_path, :class => 'btn btn-large btn-primary',:method => :get)  %><br>
+

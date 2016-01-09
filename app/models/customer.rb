@@ -4,6 +4,7 @@ class Customer < ActiveRecord::Base
 	# validates :mobile_no,presence: true,uniqueness: true
 	belongs_to :zone
 	belongs_to :plan
+	belongs_to :complaint
 	has_attached_file :photo
 	has_attached_file :address_proof
 	has_attached_file :setup_box_id

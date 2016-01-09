@@ -1,3 +1,4 @@
 class Employee < ActiveRecord::Base
-  belongs_to :zone
+  has_many :zone
+  belongs_to :complaint
 end
