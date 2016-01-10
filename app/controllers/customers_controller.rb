@@ -23,7 +23,9 @@ class CustomersController < ApplicationController
 
   def create
   	@customer = Customer.new(customer_params)
+ 
   	if @customer.save
+      @customer.create_payment()
   		redirect_to :action => 'index'
   	else
   		render :action => 'new'

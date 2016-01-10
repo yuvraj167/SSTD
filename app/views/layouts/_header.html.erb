@@ -7,7 +7,7 @@
 		<ul>
 			<li><%= link_to "Home", root_path ,:class=> "btn btn-large btn-primary" ,method: :get%></li>   
 			<li><%= link_to "Plans", plans_path ,:class=> "btn btn-large btn-primary" ,method: :get%></li>   
-			<li><%= link_to "Customer Managment", customer_path ,:class=> "btn btn-large btn-primary" ,method: :get%></li>   
+			<li><%= link_to "Customer Managment", customers_home_path ,:class=> "btn btn-large btn-primary" ,method: :get%></li>  <li><%= link_to "Payment Status", payments_home_path ,:class=> "btn btn-large btn-primary" ,method: :get%></li>
 			<li><%= link_to "Logout", destroy_user_session_path ,:class=> "btn btn-large btn-primary" ,method: :delete%></li>   
 		</ul>
 	</div> 

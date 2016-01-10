@@ -5,6 +5,7 @@ class Customer < ActiveRecord::Base
 	belongs_to :zone
 	belongs_to :plan
 	belongs_to :complaint
+	has_one :payment,dependent: :destroy
 	has_attached_file :photo
 	has_attached_file :address_proof
 	has_attached_file :setup_box_id

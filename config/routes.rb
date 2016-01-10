@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  get '/customer' => "customers#home"
+
+  get 'payments/home'
+  get '/customers/home' => "customers#home"
   #get 'management/index'
   root 'home#index'
   resources :zones
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   resources :employees
   resources :inventories
   resources :plans
+  resources :payments
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

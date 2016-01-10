@@ -24,7 +24,7 @@ class ZonesController < ApplicationController
     
 
   def show
-  	@zone = Zone.find(params[:id])
+    redirect_to payment_url(params[:id])
   end
 
  def update

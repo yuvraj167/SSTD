@@ -1,0 +1,5 @@
+<h2>Payment Status</h2><br>
+<% @zones.each do |zone| %>
+	<%= button_to(zone.name, zone, :class => 'btn btn-primary btn-block',:method => :get)  %><br>
+<% end %>
+

@@ -5,16 +5,16 @@
 	<tr>
 		<th>Customer Id </th>
 		<th>First Name</th>
-		<th>Zone Engineer</th>
+		<th>Zone</th>
 	</tr>
 	<% @customers.each do |customer| %>
 		<tr>
 			<td><%= customer.id%></td>
 			<td><%= customer.first_name %></td>
-			<td><%= customer.zone.engineer%></td>
+			<td><%= customer.zone.name %></td>
 			<td><%= link_to 'Show', customer %></td>
 			<td><%= link_to 'Edit', edit_customer_path(customer) %></td>
-			<td><%= link_to 'Destroy', customer,method: :delete, data: {confirm: 'Are you sure'} %></td>
+			<td><%= link_to 'Destroy', customer ,method: :delete, data: {confirm: 'Are you sure'} %></td>
 		</tr>
 	<% end %>
 </table> 
