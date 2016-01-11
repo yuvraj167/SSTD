@@ -117,9 +117,9 @@ ActiveRecord::Schema.define(version: 20160111121946) do
   create_table "zones", force: :cascade do |t|
     t.string   "name"
     t.string   "comments"
-    t.integer  "employee_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "employee_id"
   end
 
   add_index "zones", ["employee_id"], name: "index_zones_on_employee_id"
