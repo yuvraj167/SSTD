@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160110085419) do
+ActiveRecord::Schema.define(version: 20160111121946) do
 
   create_table "complaints", force: :cascade do |t|
     t.string   "issue"
@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 20160110085419) do
     t.string   "setup_box_id_content_type"
     t.integer  "setup_box_id_file_size"
     t.datetime "setup_box_id_updated_at"
-    t.integer  "plan_id"
-    t.integer  "zone_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.integer  "plan_id"
+    t.integer  "zone_id"
   end
 
   add_index "customers", ["plan_id"], name: "index_customers_on_plan_id"

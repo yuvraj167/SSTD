@@ -10,9 +10,9 @@ class CreateCustomers < ActiveRecord::Migration
       t.attachment :photo
       t.attachment :address_proof
       t.attachment :setup_box_id
-      t.references :plan, index: true, foreign_key: true
-      t.references :zone, index: true, foreign_key: true
       t.timestamps null: false
     end
   end
 end
+
+
