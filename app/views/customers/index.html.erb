@@ -5,12 +5,14 @@
 	<tr>
 		<th>Customer Id </th>
 		<th>First Name</th>
+		<th>Last Name</th>
 		<th>Zone</th>
 	</tr>
 	<% @customers.each do |customer| %>
 		<tr>
 			<td><%= customer.id%></td>
 			<td><%= customer.first_name %></td>
+			<td><%= customer.last_name %></td>
 			<td><%= customer.zone.name %></td>
 			<td><%= link_to 'Show', customer %></td>
 			<td><%= link_to 'Edit', edit_customer_path(customer) %></td>

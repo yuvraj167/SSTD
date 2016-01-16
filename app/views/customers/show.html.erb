@@ -1,4 +1,5 @@
-<table class="table">
+<h2>Customer</h2>
+<table class="table table-bordered">
 	<tr>
 		<td>Customer Id</td>
 		<td><%= @customer.id %></td>
@@ -28,24 +29,25 @@
 		<td><%= @customer.address%></td>
 	</tr>
 	<tr>
-		<td>Photo</td>
+		<td>Photo Proof</td>
 		<td><%= image_tag @customer.photo.url, :size => "100x100" %></td>
 	</tr>
 		<tr>
 		<td>Address proof</td>
 		<td><%= image_tag @customer.address_proof.url, :size => "100x100" %></td>
 	</tr>
-	<tr>
-		<td>Zone</td>
-		<td><%= @customer.zone.engineer%></td>
-	</tr>
-	<tr>
+		<tr>
 		<td>Setup Box id</td>
 		<td><%= image_tag @customer.setup_box_id.url, :size => "100x100" %></td>
+	</tr>
+	<tr>
+		<td>Zone</td>
+		<td><%= @customer.zone.name%></td>
 	</tr>
 	<tr>
 		<td>Plan</td>
 		<td><%= @customer.plan.name%></td>
 	</tr>
 </table>
+
 

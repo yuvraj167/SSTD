@@ -22,14 +22,20 @@ class InventoriesController < ApplicationController
 	  	end
 	 end
 
-	  def update
-      @inventory = Inventory.find(params[:id])
-      if @inventory.update(inventory_params)
-        redirect_to :action => 'index', notice: 'Inventory was successfully updated.'
-      else
-        render :edit
-      end
-  end
+	 def update
+	      @inventory = Inventory.find(params[:id])
+	      if @inventory.update(inventory_params)
+	        redirect_to :action => 'index', notice: 'Inventory was successfully updated.'
+	      else
+	        render :edit
+	      end
+  	 end	
+
+  	def destroy
+    	@inventory = Inventory.find(params[:id])
+    	@inventory.destroy
+    	redirect_to inventories_url, notice: 'Inventory was successfully destroyed.'
+  	end
 
 	  private
 

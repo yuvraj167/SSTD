@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160111121946) do
   create_table "customers", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "date_of_birth"
+    t.datetime "date_of_birth"
     t.string   "email_id"
     t.string   "mobile_no"
     t.string   "address"
@@ -48,8 +48,10 @@ ActiveRecord::Schema.define(version: 20160111121946) do
     t.datetime "updated_at",                 null: false
     t.integer  "plan_id"
     t.integer  "zone_id"
+    t.integer  "complaint_id"
   end
 
+  add_index "customers", ["complaint_id"], name: "index_customers_on_complaint_id"
   add_index "customers", ["plan_id"], name: "index_customers_on_plan_id"
   add_index "customers", ["zone_id"], name: "index_customers_on_zone_id"
 

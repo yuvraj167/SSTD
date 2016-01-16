@@ -12,6 +12,15 @@ class EmployeesController < ApplicationController
   	@employee = Employee.new
   end
 
+   def create
+    @employee = Employee.new(employee_params)
+      if @employee.save
+        redirect_to :action => 'index'
+      else
+        render :action => 'new'
+      end 
+    end
+
   def edit
     @employee = Employee.find(params[:id])
   end
@@ -23,6 +32,12 @@ class EmployeesController < ApplicationController
       else
         render :edit
       end
+  end
+
+  def destroy
+    @employee = Employee.find(params[:id])
+    @employee.destroy
+    redirect_to employees_url, notice: 'Employee was successfully destroyed.'
   end
 
   private

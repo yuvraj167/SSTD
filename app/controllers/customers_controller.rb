@@ -34,6 +34,8 @@ class CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
+    @zones = Zone.all
+    @plans = Plan.all
   end
 
   def update

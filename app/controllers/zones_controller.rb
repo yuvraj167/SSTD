@@ -36,6 +36,12 @@ class ZonesController < ApplicationController
       end
   end
 
+  def destroy
+    @zone = Zone.find(params[:id])
+    @zone.destroy
+    redirect_to zones_url, notice: 'Zone was successfully destroyed.'
+  end
+
   # private
 
    def zone_params

@@ -15,14 +15,13 @@
 		<th><%= previous %></th>
 	</tr>
 	<% @payments.each do |payment| %>
-
-
 		<tr>
 			<td><%= payment.payment.customer_id %></td>
 			<td><%= payment.payment.customer.first_name%></td>
 			<td><%= payment.payment.send(present) %></td>
 			<td><%= payment.payment.send(first) %></td>
 			<td><%= payment.payment.send(previous) %></td>
+			<td><%= link_to 'Edit', edit_payment_path(payment) %></td>
 		</tr>
 	<% end %>
 </table> 
