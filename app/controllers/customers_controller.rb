@@ -4,7 +4,7 @@ class CustomersController < ApplicationController
   end
 
    def index
-    	@customers = Customer.all.includes(:zone,:plan)
+    	@customers = Customer.all.includes(:zone,:plan).paginate(page: params[:page], per_page: 5)
       respond_to do |format|
         format.html
         format.xls { send_data(@customers.to_xls(:only => [:first_name,:email_id])) }

@@ -1,15 +1,31 @@
-<div id="top">
-	<div id="header">
+<div class="navbar">
+ 	<div id="header">
  		<h1 class="h1"><strong>Sanju Star TV<span class="h1"></span></strong></h1>
  	</div>
+ 	<div id="topmenu">
+	 	<ul id="navlist">
+	 		<li class="navli"><a href="/" class="btn btn-primary navbar-btn">Home</a></li>
+	 		<li class="navli"><a href="/plans" class="btn btn-primary navbar-btn">Plans</a></li>
+	        <li class="dropdown" style="display: table-cell;padding-right: 10px">
+	          <button type="button" class="btn btn-primary navbar-btn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customer Management <span class="caret"></span></button>
+	          <ul class="dropdown-menu">
+	            <li><a href="/customers">List Customers</a></li>
+	            <li><a href="/customers/new">Add Customers</a></li>
+	          </ul>
+	        </li>
+	        <li class="dropdown" style="display: table-cell;padding-right: 10px">
+	          <button type="button" class="btn btn-primary navbar-btn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Payment Status<span class="caret"></span></button>
+	          <ul class="dropdown-menu">
+	            <li><a href="/customers">List Customers</a></li>
+	            <li><a href="/customers/new">Add Customers</a></li>
+	          </ul>
+	        </li>
+	        <li class="navli"><%= link_to "Logout", destroy_user_session_path ,:class=> "btn btn-large btn-primary" ,method: :delete%></li> 	
 
-	 <div id="topmenu">
-		<ul>
-			<li><%= link_to "Home", root_path ,:class=> "btn btn-large btn-primary" ,method: :get%></li>   
-			<li><%= link_to "Plans", plans_path ,:class=> "btn btn-large btn-primary" ,method: :get%></li>   
-			<li><%= link_to "Customer Managment", customers_home_path ,:class=> "btn btn-large btn-primary" ,method: :get%></li>  <li><%= link_to "Payment Status", payments_home_path ,:class=> "btn btn-large btn-primary" ,method: :get%></li>
-			<li><%= link_to "Logout", destroy_user_session_path ,:class=> "btn btn-large btn-primary" ,method: :delete%></li>   
-		</ul>
-	</div> 
+	      </ul>
+     </div>
 </div>
+
+
+
 
