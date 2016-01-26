@@ -16,7 +16,7 @@ class InventoriesController < ApplicationController
 	  @inventory = Inventory.new(inventory_params)
 	  	
 	  	if @inventory.save
-	  		redirect_to :action => 'index'
+	  		redirect_to inventories_url, flash: {notice: 'Inventory was successfully created.'}
 	  	else
 	  		render :action => 'new'
 	  	end
@@ -25,7 +25,7 @@ class InventoriesController < ApplicationController
 	 def update
 	      @inventory = Inventory.find(params[:id])
 	      if @inventory.update(inventory_params)
-	        redirect_to :action => 'index', notice: 'Inventory was successfully updated.'
+	        redirect_to inventories_url, notice: 'Inventory was successfully updated.'
 	      else
 	        render :edit
 	      end

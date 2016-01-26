@@ -11,10 +11,16 @@ class PlansController < ApplicationController
   def update
   	@plan = Plan.find(params[:id])
   	if @plan.update(plan_params)
-        redirect_to :action => 'index', notice: 'Plan was successfully updated.'
+        redirect_to plans_url, notice: 'Plan was successfully updated.'
       else
         render :edit
     end
+  end
+
+  def destroy
+    @plan = Plan.find(params[:id])
+    @plan.destroy
+    redirect_to plans_url, notice: 'Plan was successfully destroyed.'
   end
 
 

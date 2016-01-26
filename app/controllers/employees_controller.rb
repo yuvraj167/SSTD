@@ -15,7 +15,7 @@ class EmployeesController < ApplicationController
    def create
     @employee = Employee.new(employee_params)
       if @employee.save
-        redirect_to :action => 'index'
+        redirect_to employees_url, notice: 'Employee was successfully created.'
       else
         render :action => 'new'
       end 
@@ -28,7 +28,7 @@ class EmployeesController < ApplicationController
  def update
       @employee = Employee.find(params[:id])
       if @employee.update(employee_params)
-        redirect_to :action => 'index', notice: 'Employee was successfully updated.'
+        redirect_to employees_url, notice: 'Employee was successfully updated.'
       else
         render :edit
       end

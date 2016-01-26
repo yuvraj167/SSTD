@@ -5,6 +5,10 @@
 		<td><%= @customer.id %></td>
 	</tr>
 	<tr>
+		<td>Customer Friendly Id</td>
+		<td><%= @customer.customer_friendly_id%></td>
+	</tr>
+	<tr>
 		<td>First Name</td>
 		<td><%= @customer.first_name %></td>
 	</tr>
@@ -39,6 +43,10 @@
 		<tr>
 		<td>Setup Box id</td>
 		<td><%= image_tag @customer.setup_box_id.url, :size => "100x100" %></td>
+	</tr>
+	<tr>
+		<td>Setup Box Number </td>
+		<td><%= @customer.setup_box_number %></td>
 	</tr>
 	<tr>
 		<td>Zone</td>

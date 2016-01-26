@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20160111121946) do
     t.string   "email_id"
     t.string   "mobile_no"
     t.string   "address"
+    t.string   "customer_friendly_id"
+    t.string   "setup_box_number"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"

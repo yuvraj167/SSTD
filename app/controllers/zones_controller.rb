@@ -30,7 +30,7 @@ class ZonesController < ApplicationController
  def update
       @zone = Zone.find(params[:id])
       if @zone.update(zone_params)
-        redirect_to :action => 'index', notice: 'Zone was successfully updated.'
+        redirect_to zones_url, notice: 'Zone was successfully updated.'
       else
         render :edit
       end

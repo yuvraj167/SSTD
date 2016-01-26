@@ -10,14 +10,15 @@
 	          <button type="button" class="btn btn-primary navbar-btn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Customer Management <span class="caret"></span></button>
 	          <ul class="dropdown-menu">
 	            <li><a href="/customers">List Customers</a></li>
-	            <li><a href="/customers/new">Add Customers</a></li>
+	            <li><a href="/customers/new">Add Customer</a></li>
 	          </ul>
 	        </li>
 	        <li class="dropdown" style="display: table-cell;padding-right: 10px">
 	          <button type="button" class="btn btn-primary navbar-btn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Payment Status<span class="caret"></span></button>
 	          <ul class="dropdown-menu">
-	            <li><a href="/customers">List Customers</a></li>
-	            <li><a href="/customers/new">Add Customers</a></li>
+	          <% Zone.all.each do |zone|%>
+	            <li><a href="/zones/<%= zone.id%>"><%= zone.name %></a></li>
+	           <% end %>
 	          </ul>
 	        </li>
 	        <li class="navli"><%= link_to "Logout", destroy_user_session_path ,:class=> "btn btn-large btn-primary" ,method: :delete%></li> 	
