@@ -8,6 +8,20 @@ class PlansController < ApplicationController
   	@plan = Plan.find(params[:id])
   end
 
+   def new
+    @plan = Plan.new
+   end
+
+  def create
+    @plan = Plan.new(plan_params)
+    if @plan.save
+      redirect_to :action => 'index'
+    else
+      render :action => 'new'
+    end
+  end
+
+
   def update
   	@plan = Plan.find(params[:id])
   	if @plan.update(plan_params)
@@ -27,6 +41,6 @@ class PlansController < ApplicationController
   private
 
   def plan_params
-  	params.require(:plan).permit(:name,:price,:plan_detals)
+  	params.require(:plan).permit(:name,:price,:plan_details)
   end
 end

@@ -5,8 +5,8 @@ class PaymentsController < ApplicationController
   end
 
   def show
-	@zone = Zone.find(params[:id])
-	@payments = @zone.customers
+	  @zone = Zone.find(params[:id])
+	  @payments = @zone.customers
   end
 
   def edit
@@ -25,7 +25,7 @@ class PaymentsController < ApplicationController
   private
 
   def payment_params
-  	params.require(:payment).permit(:january,:november,:december)
+  	params.require(:payment).permit(:january,:february,:march,:april,:may,:june,:july,:august,:september,:october,:november,:december)
   end
 
 end

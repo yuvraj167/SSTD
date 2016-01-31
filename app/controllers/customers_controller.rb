@@ -13,8 +13,6 @@ class CustomersController < ApplicationController
 
   def new
   	@customer = Customer.new
-    @zones = Zone.all
-    @plans = Plan.all
   end
 
   def show
@@ -23,7 +21,7 @@ class CustomersController < ApplicationController
 
   def create
   	@customer = Customer.new(customer_params)
- 
+    puts "inside controller"
   	if @customer.save
       @customer.create_payment()
   		redirect_to :action => 'index'

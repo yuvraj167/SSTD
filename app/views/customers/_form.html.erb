@@ -1,28 +1,17 @@
 <%= bootstrap_form_for(@customer,layout: :horizontal,:html => { :multipart => true },inline_errors: true )do |f| %>
-  <% if @customer.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this Customer from being saved:</h2>
-
-      <ul>
-      <% @customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
     <%= f.text_field :first_name %>
     <%= f.text_field :last_name %>
     <%= f.date_select :date_of_birth, { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today} %>
     <%= f.email_field :email_id %>
     <%= f.phone_field :mobile_no %>
     <%= f.text_area :address %>
-    <%= f.text_field :customer_friendly_id %>
+    <%= f.text_field :customer_friendly_id,label: "Customer_Id" %>
     <%= f.file_field :photo %>
     <%= f.file_field :address_proof %>
     <%= f.file_field :setup_box_id %>
     <%= f.text_field :setup_box_number %>
-    <%= f.collection_select :zone_id, @zones, :id,:name,:prompt => "Select zone "%>
-    <%= f.collection_select :plan_id, @plans, :id,:name, :prompt => "Select one Plan"%>
+    <%= f.collection_select :zone_id, Zone.all, :id,:name,:prompt => "Select zone "%>
+    <%= f.collection_select :plan_id, Plan.all, :id,:name, :prompt => "Select one Plan"%>
     <%= f.submit%>
     <p><p><br><br><br>
 <% end %>
