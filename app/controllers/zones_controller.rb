@@ -5,7 +5,6 @@ class ZonesController < ApplicationController
 
    def new
    	@zone = Zone.new
-    @employees = Employee.all
    end
 
   def create

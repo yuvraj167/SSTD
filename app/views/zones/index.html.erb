@@ -1,24 +1,34 @@
 <h1>Zone</h1><br>
-<table class="table table-striped table-bordered">
-	<tr>
-		<!-- <th>No</th> -->
-		<th></th>
-		<th>Zone</th>
-		<th>Engineer</th>
-		<th>Contact</th>
-		<th>Comments</th>
-	</tr>
-	<% @zones.each_with_index do |zone,index| %>
-		<tr>	
-			<td><%= index+1%></td>
-			<td><%= zone.name %></td>
-			<td><%= zone.employee.name %></td>
-			<td><%= zone.employee.mobile_no %></td>
-			<td><%= zone.comments %></td>
-			<td><%= link_to 'Edit', edit_zone_path(zone) %></td>
+<% if @zones %>
+	<table class="table table-striped table-bordered">
+		<tr>
+			<!-- <th>No</th> -->
+			<th></th>
+			<th>Zone</th>
+			<th>Engineer</th>
+			<th>Contact</th>
+			<th>Comments</th>
 		</tr>
-	<% end %>
-</table> 
+		<% @zones.each_with_index do |zone,index| %>
+			<tr>	
+				<td><%= index+1%></td>
+				<td><%= zone.name %></td>
+				<td>
+				<% if zone.employee%>
+					<%= zone.employee.name %>
+				<%end%>
+				</td>
+				<td>
+				<%if zone.employee%>
+					<%= zone.employee.mobile_no %>
+				<% end %>	
+				</td>
+				<td><%= zone.comments %></td>
+				<td><%= link_to 'Edit', edit_zone_path(zone) %></td>
+			</tr>
+		<% end %>
+	</table>
+<% end %>	 
 
 
 <%= button_to('Add Zone', new_zone_path, :class => 'btn btn-large btn-primary',:method => :get)  %><br>
