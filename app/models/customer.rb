@@ -22,5 +22,10 @@ class Customer < ActiveRecord::Base
 	validates_attachment_content_type :address_proof, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 	validates_attachment_content_type :setup_box_id, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
+	def self.search(search)
+		where("first_name LIKE ?", "%#{search}%") 
+  		# where("customer_friendly_id LIKE ?", "%#{search}%")
+	end
+
 end
   	# params.require(:customer).permit(:first_name,:middle_name,:last_name,:date_of_birth,:email_id,:mobile_no,:address,:city,:pincode,:state,:photo,:address_proof,:setup_box_id,:zone,:plan,:customer_id)

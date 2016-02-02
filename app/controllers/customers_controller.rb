@@ -4,7 +4,11 @@ class CustomersController < ApplicationController
   end
 
    def index
-    	@customers = Customer.all.includes(:zone,:plan).paginate(page: params[:page], per_page: 5)
+    if params
+      @customers = Customer.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 5)
+    else
+    	@customers = Customer.all.includes(:zone,:plan).paginate(page: params[:page], per_page: 5).order('created_at DESC')
+    end
       respond_to do |format|
         format.html
         format.xls { send_data(@customers.to_xls(:only => [:first_name,:email_id])) }
