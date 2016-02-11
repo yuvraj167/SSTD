@@ -4,8 +4,8 @@ class Customer < ActiveRecord::Base
 	# validates :mobile_no,presence: true,uniqueness: true
 	belongs_to :zone
 	belongs_to :plan
-	belongs_to :complaint
-	has_one :payment,dependent: :destroy
+	has_many :complaints,dependent: :destroy
+	has_many :payments
 	has_attached_file :photo, :default_url => "missing.png"
 	has_attached_file :address_proof, :default_url => "missing.png"
 	has_attached_file :setup_box_id, :default_url => "missing.png"

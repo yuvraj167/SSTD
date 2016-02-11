@@ -1,12 +1,35 @@
 class PaymentsController < ApplicationController
 
   def home
-  	@zones  = Zone.all
+  end
+
+  def zone
+  end
+
+  def index
+    if params
+      @payment_customers = Payment.search(params[:search])
+    else
+      @payment_customers = Payment.all
+    end
+  end
+
+  def new
+    @customer = Customer.find(params[:id])
+    @payment = @customer.payment
+  end
+
+  def create
+    @payment = Payment.new(payment_params)
+    if @payment.save
+      redirect_to :action => :show
+    else
+      render :new
+    end
   end
 
   def show
-	  @zone = Zone.find(params[:id])
-	  @payments = @zone.customers
+	  @payment = Payment.find(params[:id])
   end
 
   def edit
@@ -25,7 +48,7 @@ class PaymentsController < ApplicationController
   private
 
   def payment_params
-  	params.require(:payment).permit(:january,:february,:march,:april,:may,:june,:july,:august,:september,:october,:november,:december)
+  	params.require(:payment).permit(:payment_date,:status)
   end
 
 end

@@ -27,8 +27,7 @@ class CustomersController < ApplicationController
   	@customer = Customer.new(customer_params)
     puts "inside controller"
   	if @customer.save
-      @customer.create_payment()
-  		redirect_to :action => 'index'
+  		redirect_to customers_url, notice: 'Customer was successfully Created.'
   	else
   		render :action => 'new'
   	end 

@@ -14,12 +14,11 @@
 	          </ul>
 	        </li>
 	        <li class="dropdown" style="display: table-cell;padding-right: 10px">
-	          <button type="button" class="btn btn-primary navbar-btn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Payment Status<span class="caret"></span></button>
-	          <ul class="dropdown-menu">
-	          <% Zone.all.each do |zone|%>
-	            <li><a href="/zones/<%= zone.id%>"><%= zone.name %></a></li>
-	           <% end %>
-	          </ul>
+	          <button type="button" class="btn btn-primary navbar-btn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Payment <span class="caret"></span></button>
+		          <ul class="dropdown-menu multi-level">
+			          <li><a href="/payments/home"> Customer </a></li>
+			          <li><a href="/payments/zone"> Zone </a></li>
+		          </ul>
 	        </li>
 	        <li class="navli"><%= link_to "Logout", destroy_user_session_path ,:class=> "btn btn-large btn-primary" ,method: :delete%></li> 	
 

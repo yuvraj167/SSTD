@@ -1,0 +1,8 @@
+<%= bootstrap_form_for(@complaint,layout: :horizontal,:html => { :multipart => true },inline_errors: true )do |f| %>
+    <%= f.collection_select :customer_id, Customer.all, :id,:customer_friendly_id,:prompt => "Select customer "%>
+    <%= f.collection_select :employee_id, Employee.all, :id,:name,:prompt => "Select Assigning Employee "%>
+    <%= f.select :status, ["Open","Closed"], :prompt => "Status"%>   
+    <%= f.text_area :issue %>
+    <%= f.submit%>
+    <p><p><br><br><br>
+<% end %>

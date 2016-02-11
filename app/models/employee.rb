@@ -1,6 +1,6 @@
 class Employee < ActiveRecord::Base
   has_many :zones
-  belongs_to :complaint
+  has_many :complaints
 
   before_destroy :change_employee
 

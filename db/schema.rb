@@ -73,21 +73,11 @@ ActiveRecord::Schema.define(version: 20160111121946) do
   end
 
   create_table "payments", force: :cascade do |t|
-    t.string   "january",     default: "Unpaid"
-    t.string   "february",    default: "Unpaid"
-    t.string   "march",       default: "Unpaid"
-    t.string   "april",       default: "Unpaid"
-    t.string   "may",         default: "Unpaid"
-    t.string   "june",        default: "Unpaid"
-    t.string   "july",        default: "Unpaid"
-    t.string   "august",      default: "Unpaid"
-    t.string   "september",   default: "Unpaid"
-    t.string   "october",     default: "Unpaid"
-    t.string   "november",    default: "Unpaid"
-    t.string   "december",    default: "Unpaid"
+    t.datetime "payment_date"
+    t.string   "status",       default: "Unpaid"
     t.integer  "customer_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "payments", ["customer_id"], name: "index_payments_on_customer_id"

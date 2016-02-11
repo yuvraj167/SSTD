@@ -1,5 +1,7 @@
-<h2>Payment Status</h2><br>
-<% @zones.each do |zone| %>
-	<%= button_to(zone.name, zone, :class => 'btn btn-primary btn-block',:method => :get)  %><br>
-<% end %>
-
+<h1>Customer Payment </h1><br>
+<div>
+	<%= form_tag(payments_path, :method => "get", id: "search-form") do %>
+			<%= text_field_tag :search, params[:search], placeholder: "Search Customers" %>
+			<%= submit_tag "Search" %>
+	<% end %>
+</div>

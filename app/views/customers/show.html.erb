@@ -2,10 +2,6 @@
 <table class="table table-bordered">
 	<tr>
 		<td>Customer Id</td>
-		<td><%= @customer.id %></td>
-	</tr>
-	<tr>
-		<td>Customer Friendly Id</td>
 		<td><%= @customer.customer_friendly_id%></td>
 	</tr>
 	<tr>
@@ -18,7 +14,7 @@
 	</tr>
 	<tr>
 		<td>Date of birth</td>
-		<td><%= @customer.date_of_birth %></td>
+		<td><%= @customer.date_of_birth.strftime '%d-%m-%Y' %></td>
 	</tr>
 	<tr>
 		<td>Email Id</td>

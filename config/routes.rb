@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
 
-  get 'payments/home'
   get '/customers/home' => "customers#home"
-  #get 'management/index'
+  get 'payments/home' => "payments#home"
+  get 'payments/zone' => "payments#zone"
   root 'home#index'
+
   resources :zones
   devise_for :users
   resources :customers
