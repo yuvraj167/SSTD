@@ -1,6 +1,5 @@
 <%= bootstrap_form_for(@payment,layout: :horizontal,:html => { :multipart => true } )do |f| %>
-	<%= f.text_field :customer_id %>
-    <%= f.date_field :payment_date %>
-    <%= f.text_field :status %>
+	<%= f.collection_select :customer_id, Customer.all, :id,:first_name,:prompt => "Select customer "%>
+    <%= f.date_select :payment_date,{ :discard_day => true,label: "Month"}	 %>
     <%= f.submit %>
 <% end %>

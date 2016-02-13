@@ -1,28 +1,30 @@
 class PaymentsController < ApplicationController
 
   def home
+      if params
+        @payment_customers = Payment.search(params[:search])
+      else
+        @payment_customers = Payment.all.order("updated_at Desc")
+     end
   end
 
   def zone
   end
 
   def index
-    if params
-      @payment_customers = Payment.search(params[:search])
-    else
-      @payment_customers = Payment.all
-    end
+    @date = Date.new params["payment_date(1i)"].to_i, params["payment_date(2i)"].to_i
+    @zone = Zone.find(params[:zone_id])
+    @payment = Payment.where("payment_date Like ? ","%#{@date.to_s[0..6]}%").order("updated_at DESC").paginate(page: params[:page], per_page: 5)
   end
 
   def new
-    @customer = Customer.find(params[:id])
-    @payment = @customer.payment
+    @payment = Payment.new
   end
 
   def create
     @payment = Payment.new(payment_params)
     if @payment.save
-      redirect_to :action => :show
+      redirect_to :action => :home
     else
       render :new
     end
@@ -48,7 +50,7 @@ class PaymentsController < ApplicationController
   private
 
   def payment_params
-  	params.require(:payment).permit(:payment_date,:status)
+  	params.require(:payment).permit(:payment_date,:customer_id)
   end
 
 end
