@@ -1,8 +1,8 @@
 <h2>Zone Payment</h2><br>
 <%= bootstrap_form_tag(url: '/payments',layout: :horizontal,:html => { :multipart => true },:method => :get )do |f| %>
     <%= f.date_select :payment_date,{ :discard_day => true,label: "Month"}	 %>
-    <%= f.collection_select :zone_id, Zone.all, :id,:name,:prompt => "Select zone "%>
-    <%= f.select :status, ["Open","Closed"], :prompt => "Status"%>   
+    <%= f.collection_select :zone_id, Zone.all, :id,:name,:prompt => "Select zone ", validate: { presence: true }%>
+    <%= f.select :status, ["paid","unpaid"], :prompt => "Status"%>   
     <%= f.submit "Search" %>
 <% end %>
 

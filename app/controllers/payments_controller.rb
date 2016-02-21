@@ -1,11 +1,11 @@
 class PaymentsController < ApplicationController
 
   def home
-      if params
-        @payment_customers = Payment.search(params[:search])
-      else
-        @payment_customers = Payment.all.order("updated_at Desc")
-     end
+       # if params
+       #   @payment_customers = Payment.search(params[:search])
+       # else
+        @payment_customers = Payment.all.order("updated_at Desc").paginate(page: params[:page], per_page: 5)
+      # end
   end
 
   def zone
@@ -24,7 +24,7 @@ class PaymentsController < ApplicationController
   def create
     @payment = Payment.new(payment_params)
     if @payment.save
-      redirect_to :action => :home
+      redirect_to payments_home_url, notice: 'Payment was successfully Created.'
     else
       render :new
     end

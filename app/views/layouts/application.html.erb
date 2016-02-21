@@ -8,6 +8,11 @@
 	<%= render 'layouts/header' if user_signed_in?  %>
 	<body>
 	<div class="container-fluid">
+		<% if not user_signed_in? %>
+			<% flash.each do |key, value| %>
+	    		<div class="alert alert-success %>"><%= value %></div>
+	  		<% end %>
+		<% end %>
 		<%= render 'layouts/side_bar' if user_signed_in? %>
 		<% if user_signed_in? %>
 			<div class="container_main">

@@ -34,6 +34,12 @@ class ComplaintsController < ApplicationController
     end
   end
 
+  def destroy
+    @complaint = Complaint.find(params[:id])
+    @complaint.destroy
+    redirect_to complaints_url, notice: 'Complaint was successfully destroyed.'
+  end
+
   private
 
   def complaint_params
