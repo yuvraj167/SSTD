@@ -1,7 +1,6 @@
 class Customer < ActiveRecord::Base
-	# validates :first_name,presence: true
-	# validates :email_id,presence: true,uniqueness: true
-	# validates :mobile_no,presence: true,uniqueness: true
+	before_create :downcase_stuff
+
 	belongs_to :zone
 	belongs_to :plan
 	has_many :complaints,dependent: :destroy
@@ -22,9 +21,19 @@ class Customer < ActiveRecord::Base
 	validates_attachment_content_type :address_proof, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 	validates_attachment_content_type :setup_box_id, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
+
 	def self.search(search)
-		where("first_name LIKE ?", "%#{search}%") 
-  		# where("customer_friendly_id LIKE ?", "%#{search}%")
+		if search
+			where("first_name like :search or last_name like :search or setup_box_number like :search",{search: "%#{search}%"})
+	    else
+	    	all
+     	end
+	end
+
+	def downcase_stuff
+		p "inisde downcase"
+		self.first_name.downcase!
+		self.last_name.downcase!
 	end
 
 end

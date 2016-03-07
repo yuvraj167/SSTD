@@ -17,6 +17,7 @@
 		<th>Last Name</th>
 		<th>Zone</th>
 		<th>Plan</th>
+		<th>Registered Date</th>
 	</tr>
 	<% @customers.each_with_index do |customer,index| %>
 		<tr>
@@ -26,6 +27,7 @@
 			<td><%= customer.last_name %></td>
 			<td><%= customer.zone.name %></td>
 			<td><%= customer.plan.name%></td>
+			<td><%= customer.created_at.strftime '%d-%m-%Y'	 %></td>
 			<td><%= link_to 'Show', customer %></td>
 			<td><%= link_to 'Edit', edit_customer_path(customer) %></td>
 			<td><%= link_to 'Destroy', customer ,method: :delete, data: {confirm: 'Are you sure'} %></td>

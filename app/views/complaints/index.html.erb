@@ -6,6 +6,7 @@
 		<th>Employee</th>
 		<th>Issue</th>
 		<th>Status</th>
+		<th>Updated at</th>
 	</tr>
 	<% @complaints.each_with_index do |complaint,index| %>
 		<tr>
@@ -14,6 +15,7 @@
 			<td><%= complaint.employee.name  %></td>
 			<td><%= complaint.issue %></td>
 			<td><%= complaint.status%></td>
+			<td><%= complaint.updated_at.strftime '%d-%m-%Y' %></td>
 			<td><%= link_to 'Edit', edit_complaint_path(complaint) %></td>
 			<td><%= link_to 'Destroy', complaint ,method: :delete, data: {confirm: 'Are you sure'} %></td>
 		</tr>
@@ -24,3 +26,4 @@
 <%= button_to('Add Complaint', new_complaint_path, :class => 'btn btn-large btn-primary',:method => :get)  %><br>
 
 
+	
