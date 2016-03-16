@@ -1,23 +1,25 @@
 <div style="position: relative;">
-	<h1>Customers List</h1>
+	<h1>Customers</h1>
 	<div style="position: absolute; right: 0; top: 0; text-align: right; max-width: 50%; overflow: hidden">
-		<%= form_tag(customers_path, :method => "get", id: "search-form") do %>
-			<%= text_field_tag :search, params[:search], placeholder: "Search Customers" %>
-			<%= submit_tag "Search" %>
+		<%= search_form_for @q do |f| %>
+			<%= f.label :search %>
+ 			<%= f.search_field :first_name_or_last_name_or_customer_friendly_id_or_setup_box_number_cont %>
+ 			<%= f.submit %>
 		<% end %>
 	</div>
 </div>
 <br>
 
-<table class="table table-striped table-bordered">
-	<tr>
+<table class="table table-striped table-bordered table-hover">
+	<tr class="table-danger">
 		<th></th>
-		<th>Customer Id </th>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>Zone</th>
-		<th>Plan</th>
-		<th>Registered Date</th>
+		<th><%= sort_link(@q, :customer_friendly_id, 'Customer Id', default_order: :desc) %></th>
+		<th><%= sort_link(@q, :first_name, 'First Name', default_order: :desc) %></th>
+		<th><%= sort_link(@q, :last_name, 'Last Name', default_order: :desc) %></th>
+		<th><%= sort_link(@q, :zone_id, 'Zone', default_order: :desc) %></th>
+		<th><%= sort_link(@q, :plan_id, 'Plan', default_order: :desc) %></th>
+		<th><%= sort_link(@q, :setup_box_number, 'Setup Box Number', default_order: :desc) %></th> 
+		<th><%= sort_link(@q, :created_at, 'Registered Date', default_order: :desc) %></th>
 	</tr>
 	<% @customers.each_with_index do |customer,index| %>
 		<tr>
@@ -27,6 +29,7 @@
 			<td><%= customer.last_name %></td>
 			<td><%= customer.zone.name %></td>
 			<td><%= customer.plan.name%></td>
+			<td><%= customer.setup_box_number%></td>
 			<td><%= customer.created_at.strftime '%d-%m-%Y'	 %></td>
 			<td><%= link_to 'Show', customer %></td>
 			<td><%= link_to 'Edit', edit_customer_path(customer) %></td>
@@ -35,7 +38,7 @@
 	<% end %>
 </table> 
 
-<%= will_paginate @customers %>
+	<%= will_paginate @customers  %>
 
 <div class="row">
 	<%= button_to('Download as Excel', customers_path(:format => :xls),:class => 'btn btn-large btn-primary',:method => 'get')%><br>

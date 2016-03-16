@@ -1,7 +1,8 @@
 class ComplaintsController < ApplicationController
 
   def index
-  	@complaints = Complaint.all
+    @q = Complaint.ransack(params[:q])
+  	@complaints = @q.result
   end
 
   def show

@@ -1,12 +1,12 @@
-<h2> Complaint Log </h2><br>
+<h2> Complaints Log </h2><br>
 <table class="table table-striped table-bordered">
 	<tr>
 		<th>Id</th>
-		<th>Customer</th>
-		<th>Employee</th>
-		<th>Issue</th>
-		<th>Status</th>
-		<th>Updated at</th>
+		<th><%= sort_link(@q, :first_name, 'First Name', default_order: :desc) %></th>
+		<th><%= sort_link(@q, :employee_id, 'Employee', default_order: :desc) %></th>
+		<th><%= sort_link(@q, :issue, 'Issue', default_order: :desc) %></th>
+		<th><%= sort_link(@q, :status, 'Status', default_order: :desc) %></th>
+		<th><%= sort_link(@q, :updated_at, 'Updated At', default_order: :desc) %></th>
 	</tr>
 	<% @complaints.each_with_index do |complaint,index| %>
 		<tr>

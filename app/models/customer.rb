@@ -22,13 +22,13 @@ class Customer < ActiveRecord::Base
 	validates_attachment_content_type :setup_box_id, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
 
-	def self.search(search)
-		if search
-			where("first_name like :search or last_name like :search or setup_box_number like :search",{search: "%#{search}%"})
-	    else
-	    	all
-     	end
-	end
+	# def self.search(search)
+	# 	if search
+	# 		where("first_name like :search or last_name like :search or setup_box_number like :search",{search: "%#{search}%"})
+	#     else
+	#     	select(:id,:first_name,:last_name,:customer_friendly_id,:zone_id,:plan_id,:setup_box_number,:created_at)
+ #     	end
+	# end
 
 	def downcase_stuff
 		p "inisde downcase"

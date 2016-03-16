@@ -17,7 +17,7 @@
  every 1.minute do
 	# rake 'lib/tasks/cleanup_complaint.rake'
 	command "echo 'you can use raw cron sytax too'"
-	Complaint.last.destroy
+	#Complaint.last.destroy
 end
 
 # Learn more: http://github.com/javan/whenever

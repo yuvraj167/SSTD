@@ -10,6 +10,8 @@ gem 'will_paginate'
 
 gem "paperclip"
 
+gem 'ransack'
+
 group :development do
   gem 'sqlite3'
 end
@@ -42,7 +44,7 @@ gem 'bootstrap_form'
 
 gem 'to_xls-rails'
 
-gem 'whenever'
+# gem 'whenever'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
