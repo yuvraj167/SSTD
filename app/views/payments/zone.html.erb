@@ -1,8 +1,34 @@
 <h2>Zone Payment</h2><br>
-<%= bootstrap_form_tag(url: '/payments',layout: :horizontal,:html => { :multipart => true },:method => :get )do |f| %>
+
+<%= bootstrap_form_tag(url: '/payments/zone',layout: :horizontal,:html => { :multipart => true },:method => :get,inline_errors: true )do |f| %>
     <%= f.date_select :payment_date,{ :discard_day => true,label: "Month"}	 %>
     <%= f.collection_select :zone_id, Zone.all, :id,:name,:prompt => "Select zone ", validate: { presence: true }%>
     <%= f.select :status, ["paid","unpaid"], :prompt => "Status"%>   
     <%= f.submit "Search" %>
+<% end %>
+
+
+<% if @payment %><br>
+	<!-- <hr  style="width: 100%; color: black; height: 2px; background-color:black;"> -->
+	<table class="table table-inverse table-bordered">
+			<tr class="info">
+				<th></th>
+				<th>Name</th>
+				<th>Payment Month</th>
+				<th>Status</th>
+				<th></th>
+			</tr>
+			<% @payment.each_with_index do |payment,index|  %>
+				<tr>
+					<td><%= index + 1%></td>
+					<td><%= payment.customer.first_name %></td>
+					<td><%= payment.payment_date.strftime("%B, %Y ") %></td>
+					<td><%= payment.status %></td>
+					<td><%= link_to 'Edit', edit_payment_path(payment)%></td>
+				</tr>
+			<% end %>  
+	</table>
+	
+	<%= will_paginate @payment %>
 <% end %>
 

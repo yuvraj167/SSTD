@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111121946) do
+ActiveRecord::Schema.define(version: 20160317092925) do
 
   create_table "complaints", force: :cascade do |t|
     t.string   "issue"
@@ -78,9 +78,11 @@ ActiveRecord::Schema.define(version: 20160111121946) do
     t.integer  "customer_id"
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.integer  "zone_id"
   end
 
   add_index "payments", ["customer_id"], name: "index_payments_on_customer_id"
+  add_index "payments", ["zone_id"], name: "index_payments_on_zone_id"
 
   create_table "plans", force: :cascade do |t|
     t.string   "name"

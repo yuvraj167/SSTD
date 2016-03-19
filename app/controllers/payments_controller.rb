@@ -1,20 +1,23 @@
 class PaymentsController < ApplicationController
 
-  def home
-       # if params
-       #   @payment_customers = Payment.search(params[:search])
-       # else
-        @payment_customers = Payment.all.order("updated_at Desc").paginate(page: params[:page], per_page: 5)
-      # end
+  def index
+    @q = Payment.ransack(params[:q])
+    @payments = @q.result.includes(:customer).paginate(page: params[:page], per_page: 10)
   end
 
   def zone
-  end
-
-  def index
-    @date = Date.new params["payment_date(1i)"].to_i, params["payment_date(2i)"].to_i
-    @zone = Zone.find(params[:zone_id])
-    @payment = Payment.where("payment_date Like ? ","%#{@date.to_s[0..6]}%").order("updated_at DESC").paginate(page: params[:page], per_page: 5)
+    if params[:commit]
+      if !params[:zone_id].empty? && !params[:status].empty?
+        @payment = Payment.zone(params).paginate(page: params[:page], per_page: 10)
+        if !@payment.empty?
+          @payment
+        else
+          redirect_to payments_zone_url, notice: 'No records found for search criteria'
+        end
+      else
+        redirect_to payments_zone_url, notice: 'All fields are mandatory'
+      end
+    end
   end
 
   def new
@@ -41,7 +44,7 @@ class PaymentsController < ApplicationController
   def update
   	@payment = Payment.find(params[:id])
   	if @payment.update(payment_params)
-  		redirect_to :action => 'home', notice: 'Payment was successfully updated.'
+  		redirect_to payments_url, notice: 'Payment was successfully updated.'
   	else
   		render :edit
   	end
@@ -50,7 +53,7 @@ class PaymentsController < ApplicationController
   private
 
   def payment_params
-  	params.require(:payment).permit(:payment_date,:customer_id)
+  	params.require(:payment).permit(:payment_date,:customer_id,:status)
   end
 
 end

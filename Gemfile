@@ -12,6 +12,8 @@ gem "paperclip"
 
 gem 'ransack'
 
+gem 'whenever'
+
 group :development do
   gem 'sqlite3'
 end

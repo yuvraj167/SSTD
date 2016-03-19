@@ -1,5 +1,8 @@
-<%= bootstrap_form_for(@payment,layout: :horizontal,:html => { :multipart => true } )do |f| %>
-	<%= f.collection_select :customer_id, Customer.all, :id,:first_name,:prompt => "Select customer "%>
-    <%= f.date_select :payment_date,{ :discard_day => true,label: "Month"}	 %>
-    <%= f.submit %>
+<%= bootstrap_form_for(@payment,layout: :horizontal,:html => { :multipart => true },inline_errors: true )do |f| %>
+	<%= f.text_field :customer, disabled: true, value: @payment.customer.customer_friendly_id %> 
+    <%= f.text_field :customer, disabled: true, value: @payment.customer.first_name %>
+    <%= f.date_select :payment_date, { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today},disabled: true %>
+    <%= f.select :status, ["paid","unpaid"], :prompt => "Change Status"%> 
+    <%= f.submit%>
+    <p><p><br><br><br>
 <% end %>

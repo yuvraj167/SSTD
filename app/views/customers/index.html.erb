@@ -41,6 +41,7 @@
 	<%= will_paginate @customers  %>
 
 <div class="row">
-	<%= button_to('Download as Excel', customers_path(:format => :xls),:class => 'btn btn-large btn-primary',:method => 'get')%><br>
+	<%= button_to('Add Customer', new_customer_path, :class => 'btn btn-large btn-primary' ,:method => :get)%><br>
+	<%= button_to('Download as Excel', customers_path(:format => :xls),:class => 'btn btn-large btn-primary',:method => 'get')%>
 </div>
 

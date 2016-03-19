@@ -1,5 +1,7 @@
 body.devise{ 
-  background: url(login.jpg) no-repeat center center fixed; 
+ /* background: url(login.jpg) no-repeat center center fixed; */
+  background: none;
+  background-color: #534292;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -11,7 +13,17 @@ body.devise{
 
 .sign_in {
     text-align: center;
-    background: rgba(192,192,192,0.9);
+   /* background: rgba(192,192,192,0.9);*/
+    background: white;
+    position: relative;
+    vertical-align: middle;
+    padding: 30px 40px;
+    border-radius: 3px;
+}
+.forgot_password {
+    text-align: center;
+   /* background: rgba(192,192,192,0.9);*/
+    background: white;
     position: relative;
     vertical-align: middle;
     padding: 30px 40px;

@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
-
-
-  get '/customers/home' => "customers#home"
-  get 'payments/home' => "payments#home"
+  
   get 'payments/zone' => "payments#zone"
   root 'home#index'
 

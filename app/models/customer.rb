@@ -20,9 +20,11 @@ class Customer < ActiveRecord::Base
 	validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 	validates_attachment_content_type :address_proof, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 	validates_attachment_content_type :setup_box_id, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
+	validates_attachment_size :photo ,in: 0..500.kilobytes 
+	validates_attachment_size :address_proof ,in: 0..500.kilobytes 
+	validates_attachment_size :setup_box_id ,in: 0..500.kilobytes 
 
-
-	# def self.search(search)
+	#  def self.search(search)
 	# 	if search
 	# 		where("first_name like :search or last_name like :search or setup_box_number like :search",{search: "%#{search}%"})
 	#     else
