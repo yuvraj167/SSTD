@@ -24,7 +24,7 @@ ENV['RAILS_ENV'] = "development"
 # end	
 
 every 1.minute do
-	runner 'Complaint.where("updated_at <= ?", Time.now).destroy_all'
+	#runner 'Complaint.where("updated_at <= ?", Time.now).destroy_all'
 	runner 'Customer.all.each {|i| Payment.create(payment_date: (Date.today - 30),status: "unpaid",customer_id: i.id,zone_id: i.zone_id)}'
 end
 
