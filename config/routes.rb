@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
   get 'payments/zone' => "payments#zone"
+  get 'payments/make' => "payments#make_payment"
+  get 'complaints/auto' => "complaints#auto_destroy"
   root 'home#index'
 
   resources :zones

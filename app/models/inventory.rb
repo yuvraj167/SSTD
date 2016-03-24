@@ -1,5 +1,13 @@
 class Inventory < ActiveRecord::Base
-	validates :item,presence: true
-	validates :description,presence: true
-	validates :quantity,presence: true, numericality: { only_integer: true }
+	belongs_to :customer
+	validates :status,presence: true
+	validates :inventory_friendly_id,presence: true
+	before_destroy :check_customer
+
+	private
+
+	def check_customer
+		p "inside check_customer"
+		return self.customer.present? ? false : true
+	end
 end

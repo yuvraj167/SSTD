@@ -5,11 +5,11 @@ class CustomersController < ApplicationController
 
   def index 
     #@customers = Customer.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 5)
-    @q = Customer.ransack(params[:q])
+    @q = Customer.includes(:zone,:plan,:inventories).ransack(params[:q])
     @customers = @q.result(distinct: true).paginate(page: params[:page], per_page: 10)
     respond_to do |format|
       format.html
-      format.xls { send_data(@customers.to_xls(:only => [:first_name,:last_name])) }
+      format.xls 
     end
   end
 
@@ -33,8 +33,7 @@ class CustomersController < ApplicationController
 
   def edit
     @customer = Customer.find(params[:id])
-    @zones = Zone.all
-    @plans = Plan.all
+    @edit = true 
   end
 
   def update

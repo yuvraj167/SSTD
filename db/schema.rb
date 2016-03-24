@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317092925) do
+ActiveRecord::Schema.define(version: 20160324084655) do
 
   create_table "complaints", force: :cascade do |t|
     t.string   "issue"
-    t.string   "status"
+    t.string   "status",      default: "Open"
     t.integer  "customer_id"
     t.integer  "employee_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   add_index "complaints", ["customer_id"], name: "index_complaints_on_customer_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20160317092925) do
     t.string   "mobile_no"
     t.string   "address"
     t.string   "customer_friendly_id"
-    t.string   "setup_box_number"
+    t.text     "setup_box_number"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
@@ -65,12 +65,14 @@ ActiveRecord::Schema.define(version: 20160317092925) do
   end
 
   create_table "inventories", force: :cascade do |t|
-    t.string   "item"
-    t.string   "description"
-    t.string   "quantity"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "status",                default: "unassigned"
+    t.string   "inventory_friendly_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
   end
+
+  add_index "inventories", ["customer_id"], name: "index_inventories_on_customer_id"
 
   create_table "payments", force: :cascade do |t|
     t.datetime "payment_date"

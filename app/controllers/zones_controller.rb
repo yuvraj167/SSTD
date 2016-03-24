@@ -1,6 +1,6 @@
 class ZonesController < ApplicationController
   def index
-  	@zones = Zone.all
+  	@zones = Zone.all.includes(:employee)
   end
 
    def new

@@ -1,7 +1,7 @@
 class ComplaintsController < ApplicationController
 
   def index
-    @q = Complaint.ransack(params[:q])
+    @q = Complaint.includes(:employee,:customer).ransack(params[:q])
   	@complaints = @q.result
   end
 
@@ -24,6 +24,7 @@ class ComplaintsController < ApplicationController
 
   def edit
     @complaint = Complaint.find(params[:id])
+    @edit = true
   end
 
   def update
@@ -35,10 +36,18 @@ class ComplaintsController < ApplicationController
     end
   end
 
+  def auto_destroy
+    Complaint.where("updated_at <= ?", (Date.today - 30)).destroy_all
+    redirect_to complaints_url
+  end
+
   def destroy
     @complaint = Complaint.find(params[:id])
-    @complaint.destroy
-    redirect_to complaints_url, notice: 'Complaint was successfully destroyed.'
+    if @complaint.destroy
+        redirect_to complaints_url, notice: 'Complaint was successfully destroyed.'
+    else
+       redirect_to complaints_url, notice: 'Complaint is in open status'
+    end
   end
 
   private

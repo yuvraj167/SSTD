@@ -1,18 +1,6 @@
-<%= bootstrap_form_for(@inventory,layout: :horizontal,:html => { :multipart => true } )do |f| %>
-  <% if @inventory.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this Inventory from being saved:</h2>
-
-      <ul>
-      <% @inventory.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-    <%= f.text_field :item %>
-    <%= f.text_area :description %>
-    <%= f.text_field :quantity %>
+<%= bootstrap_form_for(@inventory,layout: :horizontal,:html => { :multipart => true },inline_errors: true )do |f| %>
+    <%= f.text_field :inventory_friendly_id %>
+      <%= f.select :status, ["assigned","unassigned"], :prompt => "Change Status"%> 
+      <%= f.collection_select :customer_id, Customer.all, :id,:first_name,:prompt => "Select Customer "%>
     <%= f.primary %>
 <% end %>

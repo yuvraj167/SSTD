@@ -6,11 +6,11 @@
 	</tr>
 	<tr>
 		<td>First Name</td>
-		<td><%= @customer.first_name %></td>
+		<td><%= @customer.first_name.capitalize %></td>
 	</tr>
 	<tr>
 		<td>Last Name</td>
-		<td><%= @customer.last_name %></td>
+		<td><%= @customer.last_name.capitalize %></td>
 	</tr>
 	<tr>
 		<td>Date of birth</td>
@@ -26,7 +26,7 @@
 	</tr>
 	<tr>
 		<td>Address</td>
-		<td><%= @customer.address%></td>
+		<td><%= @customer.address %></td>
 	</tr>
 	<tr>
 		<td>Photo Proof</td>
@@ -42,7 +42,11 @@
 	</tr>
 	<tr>
 		<td>Setup Box Number </td>
-		<td><%= @customer.setup_box_number %></td>
+		<td>
+			<% @customer.inventories.each do |c| %>
+				<%= c.inventory_friendly_id %>,
+			<% end %>
+		</td>
 	</tr>
 	<tr>
 		<td>Zone</td>

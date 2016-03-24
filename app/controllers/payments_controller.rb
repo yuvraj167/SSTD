@@ -20,6 +20,19 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def make_payment
+    data1 = Payment.count
+    Customer.all.select(:id,:zone_id).each {|i| Payment.create(payment_date: (Date.today),status: "unpaid",customer_id: i.id,zone_id: i.zone_id)}
+    data2 = Payment.count
+    if data1 != data2
+      p "true"
+      redirect_to payments_url,notice: 'Payment was successfully created'
+    else
+      p "false"
+      redirect_to payments_url,notice: 'Payment already exists for this month'
+    end
+  end
+
   def new
     @payment = Payment.new
   end

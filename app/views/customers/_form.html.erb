@@ -1,4 +1,4 @@
-<%= bootstrap_form_for(@customer,layout: :horizontal,:html => { :multipart => true },inline_errors: true )do |f| %>
+<%= bootstrap_form_for(@customer,layout: :horizontal,:html => { :multiple => true },inline_errors: true )do |f| %>
     <%= f.text_field :first_name %>
     <%= f.text_field :last_name %>
     <%= f.date_select :date_of_birth, { start_year: 100.years.ago.year, end_year: Date.today.year, default: Date.today} %>
@@ -9,9 +9,9 @@
     <%= f.file_field :photo %>
     <%= f.file_field :address_proof %>
     <%= f.file_field :setup_box_id %>
-    <%= f.text_field :setup_box_number %>
+    <%= f.collection_select :setup_box_number, Inventory.where(status: 'unassigned'), :id,:inventory_friendly_id,:prompt => "Select Inventory "%>
     <%= f.collection_select :zone_id, Zone.all, :id,:name,:prompt => "Select zone "%>
     <%= f.collection_select :plan_id, Plan.all, :id,:name, :prompt => "Select one Plan"%>
-    <%= f.submit%>
+    <%= f.primary %>
     <p><p><br><br><br>
 <% end %>

@@ -8,7 +8,7 @@ class CreateCustomers < ActiveRecord::Migration
       t.string :mobile_no
       t.string :address
       t.string :customer_friendly_id
-      t.string :setup_box_number
+      t.text :setup_box_number
       t.attachment :photo
       t.attachment :address_proof
       t.attachment :setup_box_id
