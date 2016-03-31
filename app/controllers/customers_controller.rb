@@ -55,7 +55,7 @@ class CustomersController < ApplicationController
   def customer_params
   	#logger.debug "inside"
   	#Params.require(:customer).permit(:first_name,:middle_name,:last_name,:date_of_birth,:email_id,:mobile_no,:address,:city,:pincode,:state,:photo,:address_proof,:setup_box_id,:zone,:plan,:customer_id)
-  	params.require(:customer).permit(:first_name,:last_name,:date_of_birth,:email_id,:mobile_no,:address,:photo,:address_proof,:setup_box_id,:zone_id,:plan_id,:customer_friendly_id,:setup_box_number)
+  	params.require(:customer).permit(:first_name,:last_name,:date_of_birth,:email_id,:mobile_no,:address,:photo,:address_proof,:setup_box_id,:zone_id,:plan_id,:customer_friendly_id,{:setup_box_number => []})
   end
 end
 

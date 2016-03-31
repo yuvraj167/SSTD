@@ -10,6 +10,8 @@ gem 'will_paginate'
 
 gem "paperclip"
 
+gem 'chosen-rails'
+
 gem 'ransack'
 
 gem 'whenever'

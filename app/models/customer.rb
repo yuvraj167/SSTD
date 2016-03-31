@@ -6,7 +6,7 @@ class Customer < ActiveRecord::Base
 
 	belongs_to :zone
 	belongs_to :plan
-	has_many :complaints,dependent: :destroy
+	has_many :complaints,dependent: :delete_all
 	has_many :payments,dependent: :destroy
 	has_many :inventories
 	has_attached_file :photo, :default_url => "missing.png"

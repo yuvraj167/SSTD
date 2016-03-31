@@ -22,8 +22,10 @@ class PaymentsController < ApplicationController
 
   def make_payment
     data1 = Payment.count
+    p data1
     Customer.all.select(:id,:zone_id).each {|i| Payment.create(payment_date: (Date.today),status: "unpaid",customer_id: i.id,zone_id: i.zone_id)}
     data2 = Payment.count
+    p data2
     if data1 != data2
       p "true"
       redirect_to payments_url,notice: 'Payment was successfully created'

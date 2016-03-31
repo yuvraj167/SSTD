@@ -10,7 +10,7 @@
 	<div class="container-fluid">
 		<% if not user_signed_in? %>
 			<% flash.each do |key, value| %>
-	    		<div class="alert alert-success %>"><%= value %></div>
+	    		<div class="alert alert-info %>"><%= value %></div>
 	  		<% end %>
 		<% end %>
 		<%= render 'layouts/side_bar' if user_signed_in? %>
