@@ -2,5 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-jQuery ->
-	$('#customer_setup_box_number').chosen();
+event = ->
+	$('#customer_setup_box_number').chosen()
+
+$(document).ready(event)	
+$(document).on('page:load',event)
