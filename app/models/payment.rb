@@ -9,10 +9,12 @@ class Payment < ActiveRecord::Base
 	def self.zone(params)
 		date = Date.new params["payment_date(1i)"].to_i, params["payment_date(2i)"].to_i
     	zone = Zone.find(params[:zone_id]).id
-    	@payment = Payment.where('payment_date like :search and zone_id = :id and status like :status',{search: "%#{date.to_s[0..6]}%",id: "#{zone}",status: params[:status]}).order("updated_at DESC")
+    	start_of_month = date.beginning_of_month
+    	end_of_month =  date.end_of_month
+    	@payment = Payment.where('payment_date between :start_of_month and :end_of_month and zone_id = :id and status like :status',{start_of_month: start_of_month,end_of_month: end_of_month,id: "#{zone}",status: params[:status]}).order("updated_at DESC")
 	end
 
-	def check_payment
+	def check_payment	
 		p "inside check_payment"
 		#return false if Payment.where(customer_id: self.customer_id,created_at: Time.now.beginning_of_month..Time.now.end_of_month)
 		 data = Payment.where('created_at >= ? and created_at <= ?', Time.now.beginning_of_month, Time.now.end_of_month).pluck(:customer_id).include?(self.customer_id)
