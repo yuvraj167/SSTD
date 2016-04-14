@@ -18,6 +18,8 @@ gem 'whenever'
 
 gem 'unicorn'
 
+gem 'foreman'
+
 group :development do
   gem 'sqlite3'
 end
