@@ -20,6 +20,8 @@ gem 'unicorn'
 
 gem 'foreman'
 
+gem 'rack-timeout'
+
 group :development do
   gem 'sqlite3'
 end
