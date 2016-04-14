@@ -16,11 +16,13 @@ gem 'ransack'
 
 gem 'whenever'
 
-gem 'unicorn'
+# gem 'unicorn'
 
-gem 'foreman'
+gem 'puma'
 
-gem 'rack-timeout'
+# gem 'foreman'
+
+ gem 'rack-timeout'
 
 group :development do
   gem 'sqlite3'
