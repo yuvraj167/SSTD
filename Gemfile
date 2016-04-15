@@ -10,24 +10,15 @@ gem 'will_paginate'
 
 gem "paperclip"
 
+gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
+
 gem 'chosen-rails'
 
 gem 'ransack'
 
-gem 'whenever'
-
-# gem 'unicorn'
-
-gem 'puma'
-
-# gem 'foreman'
-
- gem 'rack-timeout'
-
 group :development do
   gem 'sqlite3'
 end
-
 
 group :production do
   gem 'pg'
